@@ -24,7 +24,6 @@ public class InnerClass {
         return availableConnections.remove(0);
     }
 
-    static volatile Long count = 0L;
     static File file1 ;
 
 
@@ -35,6 +34,7 @@ public class InnerClass {
     }
 
     public static Long countFilesInDirectory(File directory) {
+        Long count = null;
         InnerClass connection = new InnerClass();
         ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(20);
         for (File file : directory.listFiles()) {
@@ -44,7 +44,7 @@ public class InnerClass {
                     public synchronized void run() {
                         try {
                             String far = connection.acquireConnection();
-                            count += printFileSizeNIO(String.valueOf(file));
+                            //count += printFileSizeNIO(String.valueOf(file));
                             connection.acquireConnection();
                             executor.shutdown();
                         } catch (InterruptedException e) {

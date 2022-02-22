@@ -5,6 +5,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class CountNumberOfFile {
     static File file1 ;
@@ -36,10 +38,10 @@ public class CountNumberOfFile {
     public static Long printFileSizeNIO(String fileName) {
 
         Path path = Paths.get(fileName);
-        Long bytes = 0L;
+        Long bytes = null;
 
         try {
-            bytes = Files.size(path);
+           bytes = Files.size(path);
         } catch (IOException e) {
             e.printStackTrace();
         }
