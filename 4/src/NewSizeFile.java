@@ -12,7 +12,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class TestSF
+public class NewSizeFile
 {
     Semaphore semaphore = new Semaphore(1);
 
@@ -36,7 +36,7 @@ public class TestSF
 
     public static Long countFilesInDirectory(File directory)
     {
-        TestSF connection = new TestSF();
+        NewSizeFile connection = new NewSizeFile();
         ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(20);
 
         for (File file : Objects.requireNonNull(directory.listFiles()))
